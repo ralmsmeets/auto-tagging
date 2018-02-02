@@ -1,10 +1,25 @@
-import pandas as pd
-import numpy as np
+import itertools
 import os
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+
+from sklearn.preprocessing import LabelBinarizer, LabelEncoder
+from sklearn.metrics import confusion_matrix
+
+from tensorflow import keras
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Dropout
+from keras.preprocessing import text, sequence
+from keras import utils
+
 
 datapath = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 
-fb_train = pd.read_csv(datapath+'/02-data/FB_Train.csv')
+so_train = pd.read_csv(datapath+'/02-data/SO_Train.csv')
 
 def _extract_top_tags(df, tagvar, topn = 20):
 
